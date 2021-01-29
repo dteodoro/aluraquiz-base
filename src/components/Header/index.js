@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Head from 'next/head';
+
 import db from '../../../db.json'
 
-export default Header => (<head><meta property="og:image" content="{db.bg}"></meta></head>);
+export default Header => (<div><Head><meta property="og:image" content={db.bg} ></meta></Head></div>);
