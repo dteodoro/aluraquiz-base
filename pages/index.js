@@ -7,6 +7,7 @@ import db from '../db.json';
 import GitHubCorner from '../src/components/GitHubCorner';
 import Footer from '../src/components/Footer';
 import QuizLogo from '../src/components/QuizLogo';
+import Header from '../src/components/Header';
 
 const Title = styled.h1`
   font-size: 50px;
@@ -16,6 +17,7 @@ const Title = styled.h1`
 export default function Home() {
   return (
     <BackgroundApp bgImage ={db.bg}> 
+      <Header></Header>
       <QuizContainer>
         <QuizLogo/>
         <Widget>
