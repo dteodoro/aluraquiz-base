@@ -1,4 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {useRouter} from 'next/router';
+import {useState} from 'react';
 
 import BackgroundApp from '../src/components/BackgroundApp';
 import QuizContainer from '../src/components/QuizContainer';
@@ -15,6 +17,9 @@ const Title = styled.h1`
 `;
 
 export default function Home() {
+  const router = useRouter();
+  const [name, setName] = useState('');
+
   return (
     <BackgroundApp bgImage ={db.bg}> 
       <Header></Header>
@@ -25,7 +30,17 @@ export default function Home() {
             <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
-            <p>{db.description}</p>
+            <form onSubmit={function (event){
+              event.preventDefault();
+              router.push(`/quiz?name=${name}`);
+            }
+          
+          } > 
+              <input onChange={function(element){
+                setName(element.target.value);
+              }} placeholder='Digite o Seu Nome' />
+              <button type="submit" disabled={name.length === 0} >Jogar [{name}]</button>
+            </form>
           </Widget.Content>
         </Widget>
         
